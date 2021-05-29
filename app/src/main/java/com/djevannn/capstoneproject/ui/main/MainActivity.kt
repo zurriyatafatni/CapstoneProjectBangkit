@@ -40,6 +40,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onMainButtonClicked() {
+        if (mMediaPlayer == null) {
+            Toast.makeText(
+                this,
+                "Tidak ada buku untuk dibaca",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
         if (!isPlaying) {
             mMediaPlayer?.prepareAsync()
             activityBinding.btnPlay.setImageDrawable(
@@ -84,12 +93,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initMusic(
-        book: BookEntity?
+        book: BookEntity
     ) {
-        if (book == null) {
-            // do something here
-            return
-        }
         mMediaPlayer = MediaPlayer()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -133,8 +138,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setMusic(book: BookEntity) {
+        val resourceId = resources.getIdentifier(
+            book.url,
+            "raw", packageName
+        )
+        activityBinding.tvBookTitle.text = book.title
+        activityBinding.tvBookAuthor.text = book.author
+        Glide.with(applicationContext)
+            .load(book.image)
+            .into(activityBinding.ivPoster)
 
+        val afd =
+            applicationContext.resources.openRawResourceFd(resourceId)
+        try {
+            mMediaPlayer?.reset();
+            mMediaPlayer?.setDataSource(
+                afd.fileDescriptor,
+                afd.startOffset,
+                afd.length
+            )
+            mMediaPlayer?.prepare()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
 
+        isPlaying = true
+        activityBinding.btnPlay.setImageDrawable(
+            ResourcesCompat.getDrawable(
+                resources,
+                R.drawable.ic_baseline_pause_circle_24,
+                null
+            )
+        )
     }
 }
 

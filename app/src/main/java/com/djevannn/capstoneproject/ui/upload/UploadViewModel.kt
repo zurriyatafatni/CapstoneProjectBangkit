@@ -1,10 +1,10 @@
-package com.djevannn.capstoneproject.ui.dashboard
+package com.djevannn.capstoneproject.ui.upload
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class UploadViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

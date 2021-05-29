@@ -16,7 +16,9 @@ class BookRepository(
 
     override fun getAllBooks(): Flow<Resource<List<BookEntity>>> =
         flow {
-            emit(Resource.Success(DummyData.generateDummyBooks()))
+//            emit(Resource.Success(DummyData.generateDummyBooks()))
+            val list = ArrayList<BookEntity>() as List<BookEntity>
+            emit(Resource.Success(list))
         }.flowOn(
             Dispatchers.Default
         )

@@ -1,6 +1,7 @@
 package com.djevannn.capstoneproject.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.djevannn.capstoneproject.data.Resource
-import com.djevannn.capstoneproject.data.source.local.entity.BookEntity
 import com.djevannn.capstoneproject.databinding.FragmentHomeBinding
 import com.djevannn.capstoneproject.ui.main.MainActivity
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         if (activity != null) {
             val homeAdapter = HomeAdapter()
             homeAdapter.onItemClick = { selectedData ->
-                 (activity as MainActivity).setMusic(selectedData)
+                (activity as MainActivity).setMusic(selectedData)
             }
             homeViewModel.books
                 .observe(viewLifecycleOwner, { books ->
@@ -50,10 +50,21 @@ class HomeFragment : Fragment() {
                             is Resource.Success -> {
                                 binding.progressBar.visibility =
                                     View.GONE
-                                homeAdapter.setData(books.data)
-                                (activity as MainActivity).initMusic(
-                                    books.data?.get(0)
+                                Log.d(
+                                    "HomeFragment",
+                                    books.data.toString()
                                 )
+                                homeAdapter.setData(books.data)
+                                if (books.data?.isNotEmpty() == true) {
+                                    (activity as MainActivity).initMusic(
+                                        books.data[0]
+                                    )
+                                } else {
+                                    binding.rvTourism.visibility =
+                                        View.GONE
+                                    binding.emptyView.visibility =
+                                        View.VISIBLE
+                                }
                             }
                             is Resource.Error -> {
                                 binding.progressBar.visibility =
