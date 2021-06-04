@@ -1,7 +1,6 @@
 package com.djevannn.capstoneproject.ui.upload
 
 import android.app.Activity.RESULT_OK
-import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.djevannn.capstoneproject.databinding.FragmentUploadBinding
-import com.djevannn.capstoneproject.utils.UploadUtility
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
@@ -24,6 +23,8 @@ class UploadFragment : Fragment() {
     // private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentUploadBinding? = null
     private val binding get() = _binding!!
+    private val uploadViewModel: UploadViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,18 +67,29 @@ class UploadFragment : Fragment() {
 
         if (requestCode == 111 && resultCode == RESULT_OK) {
             val uri =
-                data?.data as Uri //The uri with the location of the file
+                data!!.data as Uri //The uri with the location of the file
             // pdfView.fromUri(selectedFile).load() // Show the selected file
 //             val pdf = getStringPdf(uri!!)
             // upload goes here
 //            UploadUtility(requireActivity()).uploadFile(uri)
-            Toast.makeText(
-                context,
-                uri.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            try {
+                uploadViewModel.upload(uri)
+                Toast.makeText(
+                    context,
+                    "Berhasil Upload",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    context,
+                    e.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
         }
     }
+
 
     fun getStringPdf(filepath: Uri): String? {
         var inputStream: InputStream? = null

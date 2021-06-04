@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "468748877547",
+    "project_id": "myfirebasecloudmessaging-7c5c8",
+    "storage_bucket": "myfirebasecloudmessaging-7c5c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468748877547:android:e8beb64656b14c401d48ae",
+        "android_client_info": {
+          "package_name": "com.djevannn.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468748877547-6i9qeh2q2eprq1divg5td5fjdchrgd0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPRrhfvIIqpeBesn0ccVwHDak8jd1BNRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468748877547-6i9qeh2q2eprq1divg5td5fjdchrgd0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468748877547:android:18bad00c1b6acaa91d48ae",
+        "android_client_info": {
+          "package_name": "com.djevannn.myfirebasecloudmessaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468748877547-6i9qeh2q2eprq1divg5td5fjdchrgd0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPRrhfvIIqpeBesn0ccVwHDak8jd1BNRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468748877547-6i9qeh2q2eprq1divg5td5fjdchrgd0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

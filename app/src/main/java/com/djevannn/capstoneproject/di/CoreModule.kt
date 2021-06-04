@@ -8,6 +8,7 @@ import com.djevannn.capstoneproject.data.source.local.room.BookDatabase
 import com.djevannn.capstoneproject.data.source.remote.ApiService
 import com.djevannn.capstoneproject.data.source.remote.RemoteDataSource
 import com.djevannn.capstoneproject.ui.home.HomeViewModel
+import com.djevannn.capstoneproject.ui.upload.UploadViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -67,4 +68,5 @@ val viewModelModule = module {
             )
         )
     }
+    viewModel { UploadViewModel() }
 }
