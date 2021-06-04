@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.djevannn.capstoneproject.databinding.FragmentUploadBinding
+import com.djevannn.capstoneproject.utils.UploadUtility
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.IOException
 import java.io.InputStream
 
@@ -67,15 +67,16 @@ class UploadFragment : Fragment() {
 
         if (requestCode == 111 && resultCode == RESULT_OK) {
             val uri =
-                data?.data //The uri with the location of the file
+                data?.data as Uri //The uri with the location of the file
             // pdfView.fromUri(selectedFile).load() // Show the selected file
-             val pdf = getStringPdf(uri!!)
+//             val pdf = getStringPdf(uri!!)
             // upload goes here
-            Toast.makeText(
-                context,
-                pdf.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+            UploadUtility(requireActivity()).uploadFile(uri)
+//            Toast.makeText(
+//                context,
+//                pdf.toString(),
+//                Toast.LENGTH_SHORT
+//            ).show()
         }
     }
 

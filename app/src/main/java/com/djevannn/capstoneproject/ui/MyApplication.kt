@@ -2,6 +2,7 @@ package com.djevannn.capstoneproject.ui
 
 import android.app.Application
 import com.djevannn.capstoneproject.di.databaseModule
+import com.djevannn.capstoneproject.di.networkModule
 import com.djevannn.capstoneproject.di.repositoryModule
 import com.djevannn.capstoneproject.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -19,7 +20,8 @@ class MyApplication : Application() {
                 listOf(
                     databaseModule,
                     repositoryModule,
-                    viewModelModule
+                    viewModelModule,
+                    networkModule
                 )
             )
         }
