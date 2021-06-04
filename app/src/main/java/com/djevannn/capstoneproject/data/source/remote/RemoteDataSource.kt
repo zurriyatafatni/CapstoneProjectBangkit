@@ -3,6 +3,7 @@ package com.djevannn.capstoneproject.data.source.remote
 import android.util.Log
 import com.djevannn.capstoneproject.data.source.remote.network.ApiResponse
 import com.djevannn.capstoneproject.data.source.remote.response.BookResponse
+import com.djevannn.capstoneproject.utils.DummyData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,8 +14,14 @@ class RemoteDataSource(private val apiService: ApiService) {
     suspend fun getBookList(): Flow<ApiResponse<List<BookResponse>>> {
         return flow {
             try {
-                val response = apiService.getBookList()
+//                val response =  ArrayList<BookResponse>()
+//                emit(Resource.Success(list))
+                //            val list = ArrayList<BookEntity>() as List<BookEntity>
+                //            emit(Resource.Success(list))
 
+                //                val response = apiService.getBookList()
+                //
+                val response = DummyData.generateDummyBooks()
                 if (response.isNotEmpty()) {
                     emit(ApiResponse.Success(response))
                 } else {

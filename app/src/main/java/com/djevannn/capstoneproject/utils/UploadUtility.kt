@@ -17,21 +17,14 @@ class UploadUtility(private val activity: Activity) {
         "https://handyopinion.com/tutorials/UploadToServer.php"
     var serverUploadDirectoryPath: String =
         "https://handyopinion.com/tutorials/uploads/"
-    val client = OkHttpClient()
-
-    fun uploadFile(
-        sourceFilePath: String,
-        uploadedFileName: String? = null
-    ) {
-        uploadFile(File(sourceFilePath), uploadedFileName)
-    }
+    private val client = OkHttpClient()
 
     fun uploadFile(
         sourceFileUri: Uri,
         uploadedFileName: String? = null
     ) {
         val pathFromUri =
-            URIPathHelper().getPath(activity, sourceFileUri)
+            URIPathHelper().getPath(activity, sourceFileUri)!!
         uploadFile(File(pathFromUri), uploadedFileName)
     }
 

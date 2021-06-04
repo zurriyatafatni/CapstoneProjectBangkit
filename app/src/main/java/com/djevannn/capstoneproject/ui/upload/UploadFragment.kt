@@ -24,7 +24,6 @@ class UploadFragment : Fragment() {
     // private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentUploadBinding? = null
     private val binding get() = _binding!!
-    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,12 +70,12 @@ class UploadFragment : Fragment() {
             // pdfView.fromUri(selectedFile).load() // Show the selected file
 //             val pdf = getStringPdf(uri!!)
             // upload goes here
-            UploadUtility(requireActivity()).uploadFile(uri)
-//            Toast.makeText(
-//                context,
-//                pdf.toString(),
-//                Toast.LENGTH_SHORT
-//            ).show()
+//            UploadUtility(requireActivity()).uploadFile(uri)
+            Toast.makeText(
+                context,
+                uri.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onMainButtonClicked() {
+    private fun onMainButtonClicked() {
         if (mMediaPlayer == null) {
             Toast.makeText(
                 this,
